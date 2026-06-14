@@ -61,6 +61,24 @@ L'erreur est une **MSE pondérée** qui pénalise davantage les fortes occlusion
 
 ---
 
+ ## Approche
+  
+  ![Architecture de la solution](images/Approche.png)
+  
+  C'est tout pour l'image. Si tu veux la centrer et la légender proprement (comme tes autres images) :
+  
+  ## Approche
+
+  <div align="center">
+  
+  <img src="images/Approche.png" alt="Architecture de la solution" width="800"/>
+
+  <sub><i>Ensemble de 3 architectures (DINOv2-L, ConvNeXt V2-L, Faceptor), chacune en 5-fold CV, fusionnées puis calibrées (régression
+  isotone).</i></sub> 
+  
+  </div>
+--- 
+
 ## Installation
 
 ```bash
