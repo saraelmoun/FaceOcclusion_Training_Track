@@ -60,13 +60,6 @@ L'erreur est une **MSE pondérée** qui pénalise davantage les fortes occlusion
 
 
 ---
-
- ## Approche
-  
-  ![Architecture de la solution](images/Approche.png)
-  
-  C'est tout pour l'image. Si tu veux la centrer et la légender proprement (comme tes autres images) :
-  
   ## Approche
 
   <div align="center">
