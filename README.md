@@ -61,7 +61,7 @@ L'erreur est une **MSE pondérée** qui pénalise davantage les fortes occlusion
 
 ---
 
-### Installation
+## Installation
 
 ```bash
 git clone https://github.com/saraelmoun/FaceOcclusion_Training_Track.git
@@ -79,7 +79,7 @@ export CROPS_DIR=/chemin/vers/les/images   # crops visages 224×224 (.webp)
 
 ## Reproduire les résultats
 
-### Depuis les poids entraînés
+#### Depuis les poids entraînés
 
 ```bash
 bash weights/download_weights.sh                            # poids depuis Hugging Face (public)
@@ -87,7 +87,7 @@ python inference.py --weights_dir weights --out predictions
 python assemble.py
 ```
 
-### Ré-entraînement complet
+#### Ré-entraînement complet
 
 
 ```bash
