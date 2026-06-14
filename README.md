@@ -69,23 +69,17 @@ cd FaceOcclusion_Training_Track
 pip install -r requirements.txt
 export CROPS_DIR=/chemin/vers/les/images   # crops visages 224×224 (.webp)
 ```
-</br>
 
-> Les images (~100k crops) ne sont pas incluses dans le dépôt : elles proviennent du lien suivant https://partage.imt.fr/index.php/s/ntYk27ZFCbeKGqW . 
 > Renseignez leur chemin via `CROPS_DIR`.
-> Seed fixée à 42 pour la reproductibilité.
 
 
 </br> 
-Deux parcours sont possibles selon que l'on part des poids entraînés ou de zéro.
 
 --- 
 
 ## Reproduire les résultats
 
 ### Depuis les poids entraînés
-
-*Rapide. Téléchargez les 15 modèles déjà entraînés et régénèrez les prédictions.*
 
 ```bash
 bash weights/download_weights.sh                            # poids depuis Hugging Face (public)
@@ -95,7 +89,6 @@ python assemble.py
 
 ### Ré-entraînement complet
 
-*Long. Entraînez les 3 architectures sur les 5 folds (15 modèles), puis assemblez.* s
 
 ```bash
 for arch in dinov2 convnext faceptor; do
