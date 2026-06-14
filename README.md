@@ -81,6 +81,10 @@ export CROPS_DIR=/chemin/vers/les/images   # crops visages 224×224 (.webp)
 
 #### Depuis les poids entraînés
 
+Poids hébergés sur Hugging Face (accès public) :
+[saraelmoun/facepredict-occlusion-v2-weights](https://huggingface.co/saraelmoun/facepredict-occlusion-v2-weights)
+
+
 ```bash
 bash weights/download_weights.sh                            # poids depuis Hugging Face (public)
 python inference.py --weights_dir weights --out predictions
