@@ -60,28 +60,48 @@ L'erreur est une **MSE pondérée** qui pénalise davantage les fortes occlusion
 
 
 ---
-
 ## Reproduire les résultats
 
+### Installation
+
 ```bash
-# 1. Cloner le dépôt
-git clone <url-du-repo>
-cd FaceOcclusion_TrainingTrack
-
-# 2. Environnement
+git clone https://github.com/saraelmoun/FaceOcclusion_Training_Track.git
+cd FaceOcclusion_Training_Track
 pip install -r requirements.txt
-
-# 3. Télécharger les images dans DATA_ROOT (voir lien partage.imt.fr)
-#    puis ajuster DATA_ROOT dans les notebooks
-
-# 4. Explorer les données
-jupyter notebook EDA.ipynb
-
-# 5. Entraîner le modèle puis générer les prédictions de test
-#    (seed fixée pour la reproductibilité)
+export CROPS_DIR=/chemin/vers/les/images   # crops visages 224×224 (.webp)
 ```
 
-> Le pipeline d'entraînement produit les poids du modèle et `test_predictions.csv` au format requis pour la soumission.
+> **Note** — Les images (~100k crops) ne sont pas incluses dans le dépôt :
+> elles proviennent du lien suivant https://partage.imt.fr/index.php/s/ntYk27ZFCbeKGqW . Renseigner leur chemin via `CROPS_DIR`.
+> Seed fixée à 42 pour la reproductibilité.
+
+Deux parcours sont possibles selon que l'on part des poids entraînés ou de zéro.
+
+### Option A — Depuis les poids entraînés
+
+*Rapide. Téléchargez les 15 modèles déjà entraînés et régénèrez les prédictions.*
+
+```bash
+bash weights/download_weights.sh                            # poids depuis Hugging Face (public)
+python inference.py --weights_dir weights --out predictions
+python assemble.py
+```
+
+### Option B — Ré-entraînement complet
+
+*Long. Entraînez les 3 architectures sur les 5 folds (15 modèles), puis assemblez.* s
+
+```bash
+for arch in dinov2 convnext faceptor; do
+  for fold in 0 1 2 3 4; do
+    python src/run_fold.py --arch $arch --fold $fold --device cuda:0
+  done
+done
+python assemble.py
+```
+
+> Les deux options génèrent les fichiers finaux dans `submission/`
+> (version brute + calibrations `sq` et `cube`).
 
 ---
 
