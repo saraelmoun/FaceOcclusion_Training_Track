@@ -72,12 +72,12 @@ export CROPS_DIR=/chemin/vers/les/images   # crops visages 224×224 (.webp)
 ```
 
 > **Note** — Les images (~100k crops) ne sont pas incluses dans le dépôt :
-> elles proviennent du lien suivant https://partage.imt.fr/index.php/s/ntYk27ZFCbeKGqW . Renseigner leur chemin via `CROPS_DIR`.
+> elles proviennent du lien suivant https://partage.imt.fr/index.php/s/ntYk27ZFCbeKGqW . Renseignez leur chemin via `CROPS_DIR`.
 > Seed fixée à 42 pour la reproductibilité.
 
 Deux parcours sont possibles selon que l'on part des poids entraînés ou de zéro.
 
-### Option A — Depuis les poids entraînés
+### Option A, depuis les poids entraînés
 
 *Rapide. Téléchargez les 15 modèles déjà entraînés et régénèrez les prédictions.*
 
@@ -87,7 +87,7 @@ python inference.py --weights_dir weights --out predictions
 python assemble.py
 ```
 
-### Option B — Ré-entraînement complet
+### Option B, ré-entraînement complet
 
 *Long. Entraînez les 3 architectures sur les 5 folds (15 modèles), puis assemblez.* s
 
